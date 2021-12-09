@@ -8,11 +8,6 @@ export default function Game() {
 
     const DEFAULT_SQUARES = { squares: Array(9).fill(null) };
 
-    const DEAFULT_HISTORY: Square[] = [
-        DEFAULT_SQUARES
-    ];
-
-    const [history, setHistory] = useState(DEAFULT_HISTORY)
     const [xIsNext, setXIsNext] = useState(true)
     const [winner, setWinner] = useState<string | null>(null)
     const [current, setCurrent] = useState<Square>(DEFAULT_SQUARES)
@@ -29,12 +24,6 @@ export default function Game() {
 
         squares[i] = xIsNext ? "X" : "O"
 
-        setHistory(history.concat([
-            {
-                squares: squares
-            }
-        ]))
-
         setCurrent(
             {
                 squares: squares
@@ -46,7 +35,6 @@ export default function Game() {
 
     const resetGame = () => {
         setCurrent(DEFAULT_SQUARES)
-        setHistory(DEAFULT_HISTORY)
         setXIsNext(true)
         setWinner(null)
     }
